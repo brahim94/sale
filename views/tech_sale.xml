@@ -33,8 +33,17 @@
                                         <field name="country_ids" widget="many2many_tags" invisible="1"/>
                                         <field name="cin_id" invisible="1"/>
                                         <field name="ice_id" invisible="1"/>
+                                        <!-- <field name="num_word" string="Amount In Word"/> -->
                                         <field name="payment_way_ids" widget="many2many_tags" />
-                                </xpath>   
+                                </xpath> 
+                                <!-- <xpath expr="//group[@class='oe_subtotal_footer']/field[@name='amount_residual']" position="after">
+                                        <group colspan="2"  attrs="{'invisible': [('amount_total', '&lt;=', 0)]}">
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label" style="font-size:15px; text-align:right;">
+                                                <label for="num_word" style="margin-right: 8px;font-size:15px;"/>
+                                                <field name="num_word" string="Amount In Word"/>
+                                                </div>
+                                        </group>   
+                                </xpath>   -->
                         </field>
         </record>
 

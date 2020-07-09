@@ -19,6 +19,10 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
+    "external_dependencies": {
+        'python': ['num2words']
+    },
+
     # any module necessary for this one to work correctly
     'depends': ['base', 'sale', 'tech_partner', 'product', 'account'],
 

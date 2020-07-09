@@ -60,19 +60,34 @@
                                     </tr>
                                 </table>
                                  <div class="rule" style="border-style:outset;border-width:5px;vertical-align: top;text-align: center;padding:0px; margin:0px" width="50%">
+                                    <strong>Arrêter la facture à la somme de:</strong>
+                                    <span t-esc="o.get_amount_in_words()"/>
+                                </div>
+                                 <div class="rule" style="border-style:outset;border-width:5px;vertical-align: top;text-align: center;padding:0px; margin:0px" width="50%">
                                     <br>Exonération de la taxe sur la valeur ajoutée</br>
                                     <br>en vertu de l'article 93 du livre d'assiette</br>
                                     <br>et de recouvrement de la loi 35-05 promulguée par Dahir n° 1-05-197 du 26 Décembre 2005</br>
                                 </div>
+                               
                             </div>
 
                         </div>              
         </xpath>
 
+        <!-- <xpath expr="//div[@class='page']/p[position()=last()]" position="after">
+				<p>
+        			<strong>Arrêter la facture à la somme de:</strong>
+        			<span t-if="o.currency_id" t-esc="o.currency_text_test(o.amount_total)"/> 
+    			</p>
+			</xpath> -->
+            
         <xpath expr="//p[@name='note']" position="after">
         <p t-if="o.payment_way_ids">
                 Mode de paiement: <span t-field="o.payment_way_ids"/>
         </p>
+         <!-- <p t-if="o.num_word">
+                Mode de paiement: <span t-field="o.num_word"/>
+        </p> -->
         </xpath>
 </template>
 </odoo>

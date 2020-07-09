@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo.exceptions import UserError
+from odoo import fields, api, models, _
 
 class tech_sale_order(models.Model): 
     _inherit = "sale.order"
@@ -36,8 +37,28 @@ class tech_report_invoice(models.Model):
     province = fields.Many2one('res.country.state', string="Province")
     payment_way_ids = fields.Many2many('payement.methode', string='Mode de paiement')
 
+    # def get_amount_letter(self):
+    #     amount = self.currency_id.amount_to_text(self.amount_total)
+    #     return amount
+    
+    @api.depends('amount_total')
+    def get_amount_in_words(self):
+        amount_in_words = self.currency_id.amount_to_text(self.amount_total)
+        return amount_in_words
+
+    # @api.depends('amount_total', 'currency_id')
+    # def compute_text(self):
+    #     return amount_to_text_fr(self.amount_total, self.currency_id.symbol)
 
     
+# class account_invoice(report_sxw.rml_parse):
+#     def __init__(self, cr, uid, name, context):
+#     super(account_invoice, self).__init__(cr, uid, name, context=context)
+#     self.localcontext.update({
+#        'time': time,
+#        'amount_to_text_fr':amount_to_text_fr,
+
+
     
 
 
