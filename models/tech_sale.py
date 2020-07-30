@@ -7,6 +7,7 @@ class tech_sale_order(models.Model):
     #payment_methode_ids = fields.Many2many('payement.methode', string='Mode de paiement')
     
     @api.onchange('partner_id')
+<<<<<<< HEAD
     def onchange_partner_id(self):
         self.centre = self.partner_id.city
         self.province = self.partner_id.state_id
@@ -15,6 +16,21 @@ class tech_sale_order(models.Model):
     centre = fields.Char('Centre')
     province = fields.Many2one('res.country.state', string="Province")
     payment_way_id = fields.Many2many('payement.methode', string='Mode de paiement')
+=======
+    def onchange_partner_id2(self):
+        self.centre = self.partner_id.city
+        self.province = self.partner_id.state_id
+        self.payment_way_id = self.partner_id.payment_methode_id
+    
+    @api.onchange('partner_id')
+    def onchange_partner_id3(self):
+        for rec in self:
+            return {'domain': {'payment_methode_id': [('partner_id', '=', rec.partner_id.id)]}}
+
+    centre = fields.Char('Centre')
+    province = fields.Many2one('res.country.state', string="Province")
+    payment_way_id = fields.Many2one('payement.methode', string='Mode de paiement')
+>>>>>>> displaying only qualified products
 
 class tech_report_invoice(models.Model):
     _inherit = "account.move"
@@ -70,4 +86,8 @@ class tech_report_invoice(models.Model):
         
         # values = {
         # 'payment_methode_ids': False,self.partner_id.property_payment_term_id and self.partner_id.property_payment_term_id.id or False,
+<<<<<<< HEAD
     
+=======
+    
+>>>>>>> displaying only qualified products

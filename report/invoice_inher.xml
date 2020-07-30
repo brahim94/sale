@@ -73,6 +73,7 @@
 
                         </div>              
         </xpath>
+<<<<<<< HEAD
 
         <!-- <xpath expr="//div[@class='page']/p[position()=last()]" position="after">
 				<p>
@@ -80,14 +81,19 @@
         			<span t-if="o.currency_id" t-esc="o.currency_text_test(o.amount_total)"/> 
     			</p>
 			</xpath> -->
+=======
+>>>>>>> displaying only qualified products
             
         <xpath expr="//p[@name='note']" position="after">
         <p t-if="o.payment_way_ids">
                 Mode de paiement: <span t-field="o.payment_way_ids"/>
         </p>
+<<<<<<< HEAD
          <!-- <p t-if="o.num_word">
                 Mode de paiement: <span t-field="o.num_word"/>
         </p> -->
+=======
+>>>>>>> displaying only qualified products
         </xpath>
 </template>
 </odoo>

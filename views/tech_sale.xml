@@ -9,12 +9,26 @@
                         <field name="inherit_id" ref="sale.view_order_form"/>
                         <field name="arch" type="xml">
                                 <xpath expr="//field[@name='payment_term_id']" position="after">
+<<<<<<< HEAD
                                         <field name="payment_way_id" widget="many2many_tags"/> 
+=======
+                                        <field name="payment_way_id" />
+>>>>>>> displaying only qualified products
                                 </xpath>
                                 <xpath expr="//field[@name='partner_id']" position="after">
                                         <field name="centre"/>
                                         <field name="province"/>  
+<<<<<<< HEAD
                                 </xpath>   
+=======
+                                </xpath>
+                                <!-- <xpath expr="//page[@name='order_lines']/field/form/group/group/field[@name='product_id']" position="replace">
+                                        <field name="product_id" domain="[('state', '!=', 'scratch')]" context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}" force_save="1" widget="many2one_barcode"/>
+                                </xpath>    -->
+                                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="replace">
+                                       <field name="product_id" domain="[('state', '!=', 'scratch')]" context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}" force_save="1" widget="many2one_barcode" /> <!-- <field name="product_id" domain="['&',('state', '=', 'scratch'),('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" /> -->
+                                </xpath>
+>>>>>>> displaying only qualified products
                         </field>
         </record>
 
@@ -33,6 +47,7 @@
                                         <field name="country_ids" widget="many2many_tags" invisible="1"/>
                                         <field name="cin_id" invisible="1"/>
                                         <field name="ice_id" invisible="1"/>
+<<<<<<< HEAD
                                         <!-- <field name="num_word" string="Amount In Word"/> -->
                                         <field name="payment_way_ids" widget="many2many_tags" />
                                 </xpath> 
@@ -67,5 +82,30 @@
             </field> -->
         </record>
 
+=======
+                                        <field name="payment_way_ids" widget="many2many_tags" />
+                                </xpath> 
+                        </field>
+        </record>
+
+         <!-- <record id="product.product_normal_action_sell" model="ir.actions.act_window">
+            <field name="domain">[("state","=","qualifid")]</field>
+        </record> -->
+
+        <record id="action_tech_product_method_payment" model="ir.actions.act_window">
+            <field name="name">Methodes de paiement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payement.methode</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+                    id="menu_view_hr_method_payment"
+                    name="Méthode de paiement"
+                    action="action_tech_product_method_payment"
+                    parent="sale.menu_sale_config"
+                    sequence="13"
+                    groups="base.group_user"/>
+>>>>>>> displaying only qualified products
     </data>
 </odoo>
